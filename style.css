@@ -63,3 +63,6 @@ main {
 #mainLeft {
     border-right: 1px solid lightgray;
 }
+#profPic {
+    text-align: center;
+}
