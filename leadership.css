@@ -1,11 +1,13 @@
 .image-left {
     float: left; /* or float: right; depending on your preference */
     margin: 10px; /* Add margin for spacing */
+    clear: both;  /* Prevent the images from appearing alongside one another */
 }
 
 .image-right {
     float: right; /* or float: right; depending on your preference */
     margin: 10px; /* Add margin for spacing */
+    clear: both;  /* Prevent the images from appearing alongside one another */
 }
 
 body {
