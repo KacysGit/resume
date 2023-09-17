@@ -10,6 +10,11 @@
     clear: both;  /* Prevent the images from appearing alongside one another */
 }
 
+b {
+    font-weight: 500;
+    font-size: 2em;
+}
+
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 12px;

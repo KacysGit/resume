@@ -1,8 +1,52 @@
+<!DOCTYPE html>
 <html>
+<head>
+    <link href="programs.css" rel="stylesheet">
+    <title>Programming Projects</title>
+</head>
+<body>
     <h1>
-        <link href="programs.css" rel="stylesheet">
-        <title> Programming Projects</title>
+        <hr> This page is in progress <hr>
     </h1>
+    <main>
+        <article id="mainLeft">
+            <section>
+                <h2>ROCK PAPER SCISSORS</h2>
+                <p>
+                    <button onclick="showGameOptions()">Start</button> <br>
+                    <div id="gameOptions" style="display: none;">
+                        <button onclick="userChoice('rock')">Rock</button>
+                        <button onclick="userChoice('paper')">Paper</button>
+                        <button onclick="userChoice('scissors')">Scissors</button>
+                    </div>
+                    <img id="myRaccoon" src="https://images5.alphacoders.com/879/thumb-1920-879716.jpg" width="275" height="270" alt="Unknown raccoon image">
+                    
+                    <script>
+                        var index = 0;
+                        var imageList = ['https://images.saferbrand.com/is/image/woodstream/sb-lc-pest-animals-raccoon-in-trash-can?qlt=75' , 'https://tse2.mm.bing.net/th?id=OIP.zfL7B59Hk8eci5P_zHEh4wHaEd&pid=Api&P=0'];
 
-    <hr> This page is in progress <hr>
+                        function showGameOptions() {
+                            document.getElementById("gameOptions").style.display = "block";
+                        }
+
+                        function userChoice(choice) {
+                            // Handle the user's choice here, e.g., you can update the game logic.
+                            // For now, we'll just alert the chosen option.
+                            alert("You chose: " + choice);
+                        }
+
+                        function rockPaperScissors() {
+                            index = index + 1;
+                            if (index == imageList.length) {
+                                index = 0;
+                            }
+                            var image1 = document.getElementById("myRaccoon");
+                            image1.src = imageList[index];
+                        }
+                    </script>
+                </p>
+            </section>
+        </article>
+    </main>
+</body>
 </html>
