@@ -55,6 +55,7 @@ function createButtons() {
 
         buttonsGenerated = true; // Set the flag to indicate buttons are generated
     }
+    resetImage();
 }
 
 function hideButtons() {
