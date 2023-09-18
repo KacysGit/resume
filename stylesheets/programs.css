@@ -1,8 +1,15 @@
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start; /* Adjust this to your preferred vertical alignment */
+#leftComparison, #rightComparison {
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
 }
+
+#leftComparison img, #rightComparison img {
+    margin: 10px 0;
+}
+
+
 .image-left {
     float: left; /* or float: right; depending on your preference */
     margin: 10px; /* Add margin for spacing */
