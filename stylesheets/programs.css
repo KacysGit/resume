@@ -1,3 +1,8 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start; /* Adjust this to your preferred vertical alignment */
+}
 .image-left {
     float: left; /* or float: right; depending on your preference */
     margin: 10px; /* Add margin for spacing */
@@ -6,6 +11,10 @@
 .image-right {
     float: right; /* or float: right; depending on your preference */
     margin: 10px; /* Add margin for spacing */
+}
+
+img {
+    vertical-align: middle;
 }
 
 body {
@@ -50,7 +59,8 @@ i {
 }
 
 p {
-    margin: .2em auto
+    margin: .2em auto;
+    vertical-align: middle;
 }
 
 hr {
