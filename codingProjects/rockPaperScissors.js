@@ -12,54 +12,64 @@ var imageList = [
 
 var countdownElement = document.getElementById("countdown");
 
-function startCountdown() {
-    var count = 4; // Set the initial countdown value
-    var countdownInterval = setInterval(function() {
-        count--;
-        countdownElement.textContent = "Opponent's choice in: " + count;
-        if (count <= 0) {
-            clearInterval(countdownInterval);
-            countdownElement.textContent = "Opponent's choice:";
-            // Now you can generate the opponent's choice
-            var opponentChoice = generateOpponentChoice();
-            countdownElement.textContent = "Opponent chose " + opponentChoice;
-        }
-    }, 1000); // Update the countdown every second (1000 milliseconds)
+async function startCountdown(message1, message2, displayCount) {
+    return new Promise((resolve) => {
+        var count = 4; // Set the initial countdown value
+
+        var countdownInterval = setInterval(function () {
+            count--;
+
+            if (displayCount == true) {
+                countdownElement.textContent = message1 + count;
+            } else {
+                countdownElement.textContent = "";
+            }
+
+            if (count <= 0) {
+                clearInterval(countdownInterval);
+                // Now you can show the result of the event being count down to
+                countdownElement.textContent = message2;
+                resolve(); // Resolve the promise when countdown is finished
+            }
+        }, 1000); // Update the countdown every second (1000 milliseconds)
+    });
 }
 
+
 function generateOpponentChoice() {
-    // Add your code to generate the opponent's choice here
     // Once you have the opponent's choice, you can display it
     // and continue with the game logic
     var opponentInput = Math.floor(Math.random() * 3);
     var result = "";
-    if(opponentInput == 0){
+    if (opponentInput == 0) {
         opponentIndex = 0;
         result = "rock";
-    }
-    else if(opponentInput == 1){
+    } else if (opponentInput == 1) {
         opponentIndex = 1;
         result = "paper";
-    }
-    else if(opponentInput == 2){
+    } else if (opponentInput == 2) {
         opponentIndex = 2;
         result = "scissors";
-    }
-    else{
+    } else {
         opponentIndex = 3;
         console.log("Error with opponent's role");
-    }    
-    
-    // Display picture of opponent's choise
-    if (opponentIndex >= 0 && opponentIndex <= 4) {
-        var image2 = document.getElementById("opponentPiece");
-        image2.src = imageList[opponentIndex];
     }
 
-    return result; // Return the opponent's choice
+    // Display picture of opponent's choice
+    // if (opponentIndex >= 0 && opponentIndex <= 4) {
+    //     var image2 = document.getElementById("opponentPiece");
+    //     image2.src = imageList[opponentIndex];
+    // }
+
+    return {
+        resultName: result,
+        resultIndex: opponentIndex
+    };
 }
 
-function rockPaperScissors(userInput) {
+async function rockPaperScissors(userInput) {
+    
+    hideButtons();
     if (userInput == "rock") {
         index = 0;
     } else if (userInput == "paper") {
@@ -77,11 +87,33 @@ function rockPaperScissors(userInput) {
     // Display the user's choice in the HTML
     var choiceText = document.getElementById("userChoice");
     choiceText.textContent = "You chose " + userInput;
-    startCountdown();
-    hideButtons();
+
+    // Generate opponents choice
+    var opponentChoice = generateOpponentChoice();
+
+    // Define the messages for countdown
+    var preCount = "Opponent's choice in: ";
+    var postCount = "Opponent chose " + opponentChoice.resultName;
+    var showCountdown = true;
+
+    // Start the countdown with the messages
+    await startCountdown(preCount, postCount, showCountdown);
+
+    // Display image of the opponent's choise
+    // add two newlines here
+    if (opponentChoice.resultIndex >= 0 && opponentChoice.resultIndex <= 4) {
+        var image2 = document.getElementById("opponentPiece");
+        image2.src = imageList[opponentChoice.resultIndex];
+    }
+
+    // Display message indicating who won
+    var winnerText = document.getElementById("winnerIs");
+    winnerText.textContent = whoWon(userInput, opponentChoice.resultName);
 }
 
 function createButtons() {
+    var gamePiece = document.getElementById("gamePiece");
+    gamePiece.style.opacity = "1"; 
     if (!buttonsGenerated) { // Check if buttons are already generated
         var buttonContainer = document.getElementById("buttonContainer");
 
@@ -109,7 +141,22 @@ function createButtons() {
 
         buttonsGenerated = true; // Set the flag to indicate buttons are generated
     }
+
     reset();
+}
+
+function whoWon(userInput, opponentInput) {
+    if (userInput === opponentInput) {
+        return "It's a tie!";
+    } else if (
+        (userInput === "rock" && opponentInput === "scissors") ||
+        (userInput === "paper" && opponentInput === "rock") ||
+        (userInput === "scissors" && opponentInput === "paper")
+    ) {
+        return "You win!";
+    } else {
+        return "Opponent wins!";
+    }
 }
 
 function hideButtons() {
@@ -126,4 +173,8 @@ function reset() {
     var image1 = document.getElementById("gamePiece");
     image1.src = "https://wallpapercave.com/wp/wp8122132.jpg"; // Reset the image source
     countdownElement.textContent = ""; // Clear the countdown 
+    var winner = document.getElementById("winnerIs");
+    winner.innerHTML = "<br>";
+    var opponentPicture = document.getElementById("opponentPiece");
+    opponentPicture.src = "https://img.wallpapersafari.com/tablet/768/1024/56/59/Gjevgn.jpg"; // Reset the image source
 }

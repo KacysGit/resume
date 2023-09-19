@@ -9,6 +9,12 @@
     margin: 10px 0;
 }
 
+#winnerIs {
+    text-align: right;
+    font-size: 2em;
+    letter-spacing: .3em;
+}
+
 
 .image-left {
     float: left; /* or float: right; depending on your preference */
