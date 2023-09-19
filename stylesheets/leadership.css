@@ -1,3 +1,16 @@
+.image-container {
+    display: flex; /* Use flexbox for horizontal alignment */
+    justify-content: space-between; /* Add space between the two images */
+    
+}
+
+.text-wrapper {
+    float: left; /* Float the text to the left */
+    width: calc(100% - 320px); /* Adjust the width as needed based on image width */
+    margin-right: 10px; /* Add margin to separate the text and image */
+    flex: 1; 
+}
+
 .image-left {
     float: left; /* or float: right; depending on your preference */
     margin: 10px; /* Add margin for spacing */
