@@ -35,6 +35,23 @@
         an incredible experience working with a team in a professional setting, conducting experiments and interpreting
         the results, and learning about NASA's work environment.
 
+        <button onclick="nasaSlideshow()">Next Picture</button> <br>
+        <img id="nasaPic" src="pictures/rocketLaunch.jpg" height="450" alt="Unknown nasa image">
+        <script>
+            var imageList = ['pictures/teamPicture.jpg', 'pictures/wearingHelmt.jpg', 'pictures/rocketLaunch.jpg'];
+
+            // Set the starting index to the index of the currently displayed image
+            var index = imageList.indexOf('pictures/rocketLaunch.jpg');
+
+            function nasaSlideshow() {
+                index = (index + 1) % imageList.length;  // This ensures we cycle through the images without going out of bounds
+                var image1 = document.getElementById("nasaPic");
+                image1.src = imageList[index];
+            }
+        </script>
+
+
+
     </section>
     <section>
         <b> Conservation Advocating</b> <br>
