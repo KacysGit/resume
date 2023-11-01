@@ -70,15 +70,15 @@
             <button onclick="colorCatelogSlideshow()">Next Picture</button> <br>
             <img id="catelogSC" src="pictures/code/colorCatelog/1.jpg" style="width: 60%" alt="Image of app">
             <script>
-                var imageList = ['pictures/code/colorCatelog/2.jpg', 'pictures/code/colorCatelog/3.jpg', 'pictures/code/colorCatelog/4.jpg', 'pictures/code/colorCatelog/1.jpg'];
+                var colorList = ['pictures/code/colorCatelog/2.jpg', 'pictures/code/colorCatelog/3.jpg', 'pictures/code/colorCatelog/4.jpg', 'pictures/code/colorCatelog/1.jpg'];
 
                 // Set the starting index to the index of the currently displayed image
-                var index = imageList.indexOf('pictures/rocketLaunch.jpg');
+                var colors = colorList.indexOf('pictures/code/colorCatelog/1.jpg');
 
                 function colorCatelogSlideshow() {
-                    index = (index + 1) % imageList.length;  // This ensures we cycle through the images without going out of bounds
-                    var image1 = document.getElementById("catelogSC");
-                    image1.src = imageList[index];
+                    colors = (colors + 1) % colorList.length;  // This ensures we cycle through the images without going out of bounds
+                    var image1st = document.getElementById("catelogSC");
+                    image1st.src = colorList[colors];
                 }
             </script>
         </section>
