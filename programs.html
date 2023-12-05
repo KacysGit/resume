@@ -58,7 +58,9 @@
                 To complete this goal, I followed the LinkedIn learning course 
                 <a href="https://www.linkedin.com/learning/learning-react-native/creating-a-custom-hook?u=51086649" target="_blank">Learning React Native</a> by Alex Banks.
                 Throughout this course, I follow Mr. Banks' step by step guide to making a Color Catalog app using React Native. By the end, I had fully programmed an app
-                that lets the user add buttons to a list to change the background color.
+                that lets the user add buttons to a list to change the background color. <br><br>
+
+                You can see the Color Catalog in action at <a href="https://kacysgit.github.io/ColorCatalog/" target="_blank">this</a> link!
                 <img src="pictures/code/colorCatelog/ColorCatelogCode.jpg" alt="Image of code" style="width: 100%">
             </p>
         </section>
@@ -83,4 +85,41 @@
             </script>
         </section>
     </article>
+</main>
+
+<main>
+    <article id="mainLeft">
+        <section>
+            <h2>Hercules Fitness App</h2> <br>
+            <p>
+                From August 2023 through November 2023, I worked with Kaleb Perez, Shelby Cumings, Julio Cantu, and Aaron Parks to make a Fitness
+                app called Hercules. Using React Native, we were able to create an app that lets the user create trackers (for example to monitor water intake
+                of sleep intake) and also monitor their meals and workouts. Each button in the app was transparent with a graph over it so that the user could 
+                see their progress through the graph and click on it to navigate to the next screen.
+                <img src="pictures/code/hercules/code.jpg" alt="Image of code" style="width: 100%">
+            </p>
+        </section>
+    </article>
+    
+    <article id="mainRight">
+        <section>
+            <br><br><br><br><br>
+            <button onclick="herculesSlideshow()">Next Picture</button> <br>
+            <img id="firstHerculesImg" src="pictures/code/hercules/login.jpg" style="width: 60%" alt="Image of app">
+            <script>
+                var herculesImgList = ['pictures/code/hercules/muscleDay.jpg', 'pictures/code/hercules/addDay.jpg', 'pictures/code/hercules/newGraph.jpg', 'pictures/code/hercules/addReps.jpg', 'pictures/code/hercules/login.jpg'];
+
+                // Set the starting index to the index of the currently displayed image
+                var colors = herculesImgList.indexOf('pictures/code/colorCatelog/1.jpg');
+
+                function herculesSlideshow() {
+                    colors = (colors + 1) % herculesImgList.length;  // This ensures we cycle through the images without going out of bounds
+                    var image1st = document.getElementById("firstHerculesImg");
+                    image1st.src = herculesImgList[colors];
+                }
+            </script>
+        </section>
+    </article>
+</main>
+    
 </html>
